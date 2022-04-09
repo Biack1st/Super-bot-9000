@@ -11,7 +11,9 @@ const list = [
         cmd: `${prefix}spamping`,
         action: function(msg){
             const arg2 = msg.split(" ")[1]
-            msg.reply(`${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}`)
+            for (let i = 0; i < 5; i++){
+                msg.reply(`${arg2}`)
+            }
         }
     }
 ]
