@@ -1,9 +1,14 @@
+var prefix = "!"
+
 const list = [
     {
-        cmd: "!bruh",
+        cmd: `${prefix}bruh`,
         action: function(msg) {
             msg.reply("bruh bruh")
         }
+    },
+    {
+        cmd: ``
     }
 ]
 
