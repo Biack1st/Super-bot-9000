@@ -1,5 +1,7 @@
 let prefix = "!"
 
+const Roulettemodule = require("./commands/roulette")
+
 const list = [
    
     {
@@ -7,7 +9,7 @@ const list = [
         action: function(msg){
             const repeatTime = 10
 
-            const arg2 = msg.split(" ")[1]
+            const arg2 = msg.content.split(" ")[1]
 
             const replied = arg2
 
@@ -27,7 +29,23 @@ const list = [
 
           data.then(d => d.data)
           .then(d => msg.reply(d))
-      }  
+      } 
+    },
+    {
+        cmd: prefix + `roulette`,
+        action: function(msg){
+          const randomchanc = Roulettemodule(1,2)
+          const msges = randomchanc === 1 && "you win" || "you lose"
+          msg.reply(msges)
+        }
+    },
+    {
+        cmd: prefix + `roulette`,
+        action: function(msg){
+          const randomchanc = Roulettemodule(1,2)
+          const msges = randomchanc === 1 && "you win" || "you lose"
+          msg.reply(msges)
+        }
     }
 ]
 
