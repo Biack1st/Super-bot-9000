@@ -1,14 +1,15 @@
 // Require the necessary discord.js classes
 const { Client, Intents } = require('discord.js');
-const token = "OTYyMTM4ODk0OTU3MTY2Njky.YlDLrA._RUwauHUbxz7C4L6LU5mBK3GbUo"
 
-// Create a new client instance
+require("dotenv").config();
+
+
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
-// When the client is ready, run this code (only once)
+
 client.once('ready', () => {
 	console.log('Ready!');
 });
 
-// Login to Discord with your client's token
-client.login(token);
+
+client.login(process.env.TOKEN);
