@@ -8,7 +8,10 @@ const list = [
         }
     },
     {
-        cmd: ``
+        cmd: `${prefix}spamping`,
+        action: function(msg){
+            msg.reply()
+        }
     }
 ]
 
