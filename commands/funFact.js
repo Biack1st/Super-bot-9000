@@ -9,3 +9,5 @@ async function funFact() {
 
     return jokeData
 }
+
+module.exports = funFact
