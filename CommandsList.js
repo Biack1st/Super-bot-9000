@@ -2,14 +2,14 @@ let prefix = "!"
 
 const list = [
     {
-        cmd: `${prefix}bruh`,
+        cmd: prefix + `bruh`,
         action: function(msg) {
             
         }
 
     },
     {
-        cmd: `${prefix}spamping`,
+        cmd: prefix + `spamping`,
         action: function(msg){
             const repeatTime = 10
 
