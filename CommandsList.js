@@ -6,6 +6,7 @@ const list = [
         action: function(msg) {
             msg.reply("bruh bruh")
         }
+
     },
     {
         cmd: `${prefix}spamping`,
