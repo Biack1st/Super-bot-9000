@@ -17,6 +17,17 @@ const list = [
 
             msg.reply(replied)
         }
+    },
+    {
+      cmd: prefix + "funfact",
+      action: function(msg) { 
+          const funFactModule = require("./commands/funFact")  
+
+          const data = funFactModule()
+
+          data.then(d => d.data)
+          .then(d => msg.reply(d))
+      }  
     }
 ]
 
