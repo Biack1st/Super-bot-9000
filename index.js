@@ -12,6 +12,8 @@ client.on("messageCreate", (msg) => {
         const cmdData = cmdList[i]
 
         if (msg.content.match(cmdData.cmd)) {
+            msg.delete()
+            
             cmdData.action(msg)
         }
     }
