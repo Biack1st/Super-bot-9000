@@ -3,13 +3,7 @@ let prefix = "!"
 const Roulettemodule = require("./commands/roulette")
 
 const list = [
-    {
-        cmd: prefix + `bruh`,
-        action: function(msg) {
-            
-        }
-
-    },
+   
     {
         cmd: prefix + `spamping`,
         action: function(msg){
