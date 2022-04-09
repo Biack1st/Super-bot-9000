@@ -1,5 +1,7 @@
 let prefix = "!"
 
+const Roulettemodule = require("./commands/roulette")
+
 const list = [
     {
         cmd: prefix + `bruh`,
@@ -22,6 +24,14 @@ const list = [
             }
 
             msg.reply(replied)
+        }
+    },
+    {
+        cmd: prefix + `roulette`,
+        action: function(msg){
+          const randomchanc = Roulettemodule(1,2)
+          const msges = randomchanc === 1 && "you win" || "you lose"
+          msg.reply(msges)
         }
     }
 ]

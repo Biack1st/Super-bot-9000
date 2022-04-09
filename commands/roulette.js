@@ -2,8 +2,8 @@ function ezrandom(min,max){
     return Math.floor(Math.random()*(max,min)+min)
 }
 
-function roulette(msg){
- const randomedchance = ezrandom(1,2)
+function roulette(min,nax){
+ const randomedchance = ezrandom(min,max)
  return randomedchance
 }
 
