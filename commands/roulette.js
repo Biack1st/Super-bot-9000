@@ -4,6 +4,7 @@ function ezrandom(min,max){
 
 function roulette(msg){
  const randomedchance = ezrandom(1,2)
+ return randomedchance
 }
 
 module.exports = roulette
