@@ -8,11 +8,14 @@ require("dotenv").config();
 const client = new Client({ intents: [Intents.FLAGS.GUILDS, Intents.FLAGS.GUILD_MESSAGES] });
 
 client.on("messageCreate", (msg) => {
+    console.log("d")
     for (let i = 0; i < cmdList.length; i++) {
         const cmdData = cmdList[i]
 
-        if (msg.content.match(cmdData.cmd)) {            
-            cmdData.action(msg)
+        if (msg.content.match(cmdData.cmd)) {         
+            cmdData.action(msg, client)
+           
+            return
         }
     }
 })

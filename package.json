@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/Biack1st/Super-bot-9000#readme",
   "dependencies": {
+    "@discordjs/rest": "^0.3.0",
+    "discord-api-types": "^0.31.0",
     "env": "^0.0.2",
     "node-fetch": "^2.6.1"
   }

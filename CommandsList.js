@@ -2,6 +2,8 @@ let prefix = "!"
 
 const Roulettemodule = require("./commands/roulette")
 
+const discord = require("discord.js")
+
 const list = [
    
     {
@@ -23,9 +25,9 @@ const list = [
     {
       cmd: prefix + "funfact",
       action: function(msg) { 
-          const funFactModule = require("./commands/funFact")  
+          const getFunFact = require("./commands/funFact")  
 
-          const data = funFactModule()
+          const data = getFunFact()
 
           data.then(d => d.data)
           .then(d => msg.reply(d))
@@ -33,10 +35,41 @@ const list = [
     },
     {
         cmd: prefix + `roulette`,
-        action: function(msg){
-          const randomchanc = Roulettemodule(1,2)
-          const msges = randomchanc === 1 && "you win" || "you lose"
-          msg.reply(msges)
+        action: function(msg, client){
+          const randomchance = Roulettemodule(1,2)
+
+          console.log(randomchance)
+
+          const userMsg = randomchance == 1 && "you win" || "you lose"
+            
+          const embedData = {
+            color: 0x0099ff,
+            title: 'Roulette',
+            author: {
+              name: 'Super bot 9000',
+              icon_url: 'https://i.imgur.com/ufhQdix.png',
+            },
+            description: 'Roulette',
+            thumbnail: {
+              url: 'https://i.imgur.com/h1Al3kp.png',
+            },
+            fields: [
+              {
+                name: 'Result',
+                value: userMsg,
+              },
+            ],
+            timestamp: new Date(),
+            footer: {
+              text: `called on by ${msg.author.tag}`,
+              icon_url: 'https://i.imgur.com/ufhQdix.png',
+	        },
+        }
+              
+
+          msg.reply({ embeds: [embedData] })
+
+          
         }
     }
 ]
