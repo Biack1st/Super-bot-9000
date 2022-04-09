@@ -10,7 +10,8 @@ const list = [
     {
         cmd: `${prefix}spamping`,
         action: function(msg){
-            msg.reply()
+            const arg2 = msg.split(" ")[1]
+            msg.reply(`${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}${arg2}`)
         }
     }
 ]
