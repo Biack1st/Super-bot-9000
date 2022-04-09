@@ -1,4 +1,4 @@
-var prefix = "!"
+let prefix = "!"
 
 const list = [
     {
