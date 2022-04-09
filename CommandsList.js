@@ -38,14 +38,6 @@ const list = [
           const msges = randomchanc === 1 && "you win" || "you lose"
           msg.reply(msges)
         }
-    },
-    {
-        cmd: prefix + `roulette`,
-        action: function(msg){
-          const randomchanc = Roulettemodule(1,2)
-          const msges = randomchanc === 1 && "you win" || "you lose"
-          msg.reply(msges)
-        }
     }
 ]
 
