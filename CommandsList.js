@@ -36,13 +36,45 @@ const list = [
     },
     {
       cmd: prefix + "funfact",
-      action: function(msg) { 
+      action: async function(msg) { 
+        try {
           const getFunFact = require("./commands/funFact")  
 
-          const data = getFunFact()
+          const data = await getFunFact()
 
-          data.then(d => d.data)
-          .then(d => msg.reply(d))
+          console.log(data)
+
+          msg.reply({embeds: [{
+              color: 0x0099ff,
+	            title: 'Fun fact',
+              author: {
+                name: 'Super Robot 9000',
+                icon_url: 'https://images-ext-1.discordapp.net/external/j0GYtDP6M3F6iKBkAeLUcVPwHcmA5V-u4nmz3MNTg10/https/i.imgur.com/ufhQdix.png',
+              },
+              description: 'Fun fact',
+
+              fields: [
+                {
+                  name: ":warning: WARNING :warning:",
+                  value: "The following fact is returned by 3rd party API endpoint. The following fact may be inappropriate or gross for some users."
+                },  
+                {
+                  name: "Fact",
+                  value: data.data
+                },
+              
+            ],
+            footer: {
+              text: `Called on by: ${msg.author.tag}`,
+              icon_url: 'https://images-ext-1.discordapp.net/external/j0GYtDP6M3F6iKBkAeLUcVPwHcmA5V-u4nmz3MNTg10/https/i.imgur.com/ufhQdix.png',
+            },
+          }]
+        })
+        }
+        catch(err) {
+          msg.reply("Failed to get a fun fact :(")
+          console.log(err)          
+        } 
       },
       description: "Replies with a random, useless fact." 
     },
@@ -107,6 +139,39 @@ const list = [
         }
         msg.reply({embeds: [embedData]})
       }
+    },
+    {
+      cmd: prefix + "troll",
+
+      action: function(msg, client) {
+        if (! msg.author.bot) {
+          if (msg.content.toLowerCase().match("!troll")) {
+             msg.delete()
+             const target = msg.content.split(" ")[1]
+ 
+             const trollMsg = msg.content.split("-m")[1] || "get trolled nub lmao"
+               
+             const anonymous = msg.content.split("-a")[1] != null || false
+                         
+             if (target) {
+                 const member = client.users.cache.find(u => u.tag == target)
+     
+                 const currentUser = msg.author.tag
+     
+                 if (member && ! member.bot) {
+                     const id = member.id
+                     
+                     const targetUser = client.users.cache.find(u => u.id == id)
+       
+                     targetUser.send(`${ anonymous == true && "Anonymous" || currentUser} trolled you: ${trollMsg}`)
+     
+                     console.log(`sender: ${msg.author.id} sent msg to ${targetUser} msg: ${trollMsg}`)
+                 }
+             }
+         }
+       }
+      },
+      description: "trolls the specified user"
     }
 ]
 

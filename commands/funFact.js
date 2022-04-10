@@ -3,11 +3,18 @@ const nodeFetch = require("node-fetch")
 const url = "https://useless-facts.sameerkumar.website/api"
 
 async function funFact() {
-    const jokePromise = await nodeFetch(url)
+    try {
+        const jokePromise = await nodeFetch(url)
 
-    const jokeData = await jokePromise.json()
+        const jokeData = await jokePromise.json()
+    
+        return jokeData
+    }
 
-    return jokeData
+    catch(err) {
+        console.log(err)
+    }
+   
 }
 
 module.exports = funFact
